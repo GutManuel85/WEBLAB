@@ -1,12 +1,12 @@
 <nav>
   <ul>
-    <li><strong>GradeUp</strong></li>
+    <li><strong><a routerLink="/">GradeUp</a></strong></li>
   </ul>
   <ul>
-    <li *ngIf="role === 'admin'"><a href="#">Schüler-Verwaltung</a></li>
-    <li *ngIf="role === 'admin'"><a href="#">Klassen-Verwaltung</a></li>
-    <li *ngIf="role === 'admin'"><a href="#">Fächer-Verwaltung</a></li>
-    <li *ngIf="role === 'admin' || role === 'teacher'"><a href="#">Noten-Erfassung</a></li>
+    <li *ngIf="role === 'admin'"><a routerLink="/students-admin">Schüler-Verwaltung</a></li>
+    <li *ngIf="role === 'admin'"><a routerLink="/subjects-admin">Fächer-Verwaltung</a></li>
+    <li *ngIf="role === 'admin'"><a routerLink="/classes-admin">Klassen-Verwaltung</a></li>
+    <li *ngIf="role === 'admin' || role === 'teacher'"><a routerLink="/teacher">Noten-Erfassung</a></li>
     <li *ngIf="role === 'student'"><a href="#">Meine Noten</a></li>
   </ul>
 </nav>
