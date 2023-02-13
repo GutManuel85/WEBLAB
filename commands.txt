@@ -1,0 +1,14 @@
+Angular:
+
+*********Create APP and Setup style***********
+npm install -g @angular/cli         ::muss nur einmal gemacht werden, da global
+ng new app --no-strict
+cd ./app
+npm install bootstrap
+:: nun muss node_modules/bootstrap/dist/css/bootstrap.min.css ins angular.json file bei styles[] als erster Eintrag ergänzt werden.
+ng serve
+
+*********Create Component**********
+:: zuerst neues Terminal öffnen und in app navigieren
+cd ./app
+ng generate component header       ::Shortcut ist ng g c header
