@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,14 @@ import { StudentsAdminComponent } from './admin-area/students-admin/students-adm
 import { ClassesAdminComponent } from './admin-area/classes-admin/classes-admin.component';
 import { StudentListComponent } from './admin-area/students-admin/student-list/student-list.component';
 import { StudentEditComponent } from './admin-area/students-admin/student-edit/student-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatListModule} from "@angular/material/list";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatButtonModule} from "@angular/material/button";
+import { PlaygroundComponent } from './playground/playground.component';
+
 
 @NgModule({
   declarations: [
@@ -26,11 +35,18 @@ import { StudentEditComponent } from './admin-area/students-admin/student-edit/s
     StudentsAdminComponent,
     ClassesAdminComponent,
     StudentListComponent,
-    StudentEditComponent
+    StudentEditComponent,
+    PlaygroundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

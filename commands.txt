@@ -4,8 +4,14 @@ Angular:
 npm install -g @angular/cli         ::muss nur einmal gemacht werden, da global
 ng new app --no-strict
 cd ./app
-npm install bootstrap
-:: nun muss node_modules/bootstrap/dist/css/bootstrap.min.css ins angular.json file bei styles[] als erster Eintrag ergänzt werden.
+ng add @angular/material
+npm install @picocss/pico
+:: nun muss "node_modules/@picocss/pico/css/pico.min.css" file bei styles[] als erster Eintrag ergänzt werden.
+:: !!!!! Falls erst nachträglich hinzugefügt, muss laufende App mit CTRL C gestoppt und mit ng serve neu gestartet werden, damit Änderungen aktiv sind
+
+::not used: npm install bootstrap@3 ::not used
+::not used: nun muss "node_modules/bootstrap/dist/css/bootstrap.min.css" ins angular.json file bei styles[] als erster Eintrag ergänzt werden.
+
 ng serve
 
 *********Create Component**********
