@@ -1,0 +1,27 @@
+.student-card {
+  max-width: 40%;
+  min-width: 300px;
+  background-color: #F0F0F0;
+  margin: 8px;
+}
+
+#cardTitle{
+  color: var(--primary);
+}
+
+.button{
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+#editButton{
+  background-color: var(--primary);
+  color: white;
+  horiz-align: right;
+}
+
+#deleteButton{
+  background-color: var(--del-color);
+  color: white;
+  horiz-align: right;
+}

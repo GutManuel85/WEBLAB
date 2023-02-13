@@ -1,1 +1,10 @@
-<p>student-list works!</p>
+<label for="search">
+  Suche
+</label>
+<input type="text" id="search" name="search" placeholder="Suchtext eingeben"
+[(ngModel)]="mySearchString">
+<p>{{mySearchString}}</p>
+
+<app-student-item *ngFor="let studentElement of students"
+                  [student]="studentElement" [searchString]="mySearchString">
+</app-student-item>

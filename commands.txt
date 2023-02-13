@@ -18,3 +18,7 @@ ng serve
 :: zuerst neues Terminal öffnen und in app navigieren
 cd ./app
 ng generate component header       ::Shortcut ist ng g c header
+
+*********Create Service************
+:: manuell einen Ordner services erstellen
+ng generate service student

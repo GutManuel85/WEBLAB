@@ -21,6 +21,9 @@ import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatButtonModule} from "@angular/material/button";
 import { PlaygroundComponent } from './playground/playground.component';
+import { StudentItemComponent } from './admin-area/students-admin/student-list/student-item/student-item.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatTabsModule} from "@angular/material/tabs";
 
 
 @NgModule({
@@ -36,7 +39,8 @@ import { PlaygroundComponent } from './playground/playground.component';
     ClassesAdminComponent,
     StudentListComponent,
     StudentEditComponent,
-    PlaygroundComponent
+    PlaygroundComponent,
+    StudentItemComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import { PlaygroundComponent } from './playground/playground.component';
     MatSlideToggleModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

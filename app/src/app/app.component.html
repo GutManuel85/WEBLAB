@@ -1,6 +1,10 @@
 <main class="container">
-  <app-log-in></app-log-in>
-  <app-header></app-header>
-  <app-playground></app-playground>
+  <div *ngIf="!loggedIn">
+    <app-log-in></app-log-in>
+  </div>
+  <div *ngIf="loggedIn">
+    <app-header></app-header>
+    <app-students-admin></app-students-admin>
+  </div>
 </main>
 
