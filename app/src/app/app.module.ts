@@ -8,6 +8,9 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AdminAreaComponent } from './admin-area/admin-area.component';
 import { TeacherAreaComponent } from './teacher-area/teacher-area.component';
 import { StudentAreaComponent } from './student-area/student-area.component';
+import { SubjectsAdminComponent } from './admin-area/subjects-admin/subjects-admin.component';
+import { StudentsAdminComponent } from './admin-area/students-admin/students-admin.component';
+import { ClassesAdminComponent } from './admin-area/classes-admin/classes-admin.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { StudentAreaComponent } from './student-area/student-area.component';
     LogInComponent,
     AdminAreaComponent,
     TeacherAreaComponent,
-    StudentAreaComponent
+    StudentAreaComponent,
+    SubjectsAdminComponent,
+    StudentsAdminComponent,
+    ClassesAdminComponent
   ],
   imports: [
     BrowserModule,
