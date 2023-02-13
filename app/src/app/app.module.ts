@@ -13,7 +13,7 @@ import {SubjectsAdminComponent} from './admin-area/subjects-admin/subjects-admin
 import {StudentsAdminComponent} from './admin-area/students-admin/students-admin.component';
 import {ClassesAdminComponent} from './admin-area/classes-admin/classes-admin.component';
 import {StudentListComponent} from './admin-area/students-admin/student-list/student-list.component';
-import {StudentEditComponent} from './admin-area/students-admin/student-edit/student-edit.component';
+import {StudentCreateComponent} from './admin-area/students-admin/student-create/student-create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
@@ -24,6 +24,10 @@ import {PlaygroundComponent} from './playground/playground.component';
 import {StudentItemComponent} from './admin-area/students-admin/student-list/student-item/student-item.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -39,7 +43,7 @@ import {MatTabsModule} from "@angular/material/tabs";
     StudentsAdminComponent,
     ClassesAdminComponent,
     StudentListComponent,
-    StudentEditComponent,
+    StudentCreateComponent,
     PlaygroundComponent,
     StudentItemComponent
   ],
@@ -53,7 +57,11 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatProgressSpinnerModule,
     MatButtonModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

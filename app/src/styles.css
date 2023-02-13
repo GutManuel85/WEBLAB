@@ -3,3 +3,10 @@ h1{
   color: var(--primary);
   padding-top: 5%;
 }
+
+mat-tab{
+  margin-top: 5%;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
