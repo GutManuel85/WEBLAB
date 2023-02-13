@@ -11,6 +11,8 @@ import { StudentAreaComponent } from './student-area/student-area.component';
 import { SubjectsAdminComponent } from './admin-area/subjects-admin/subjects-admin.component';
 import { StudentsAdminComponent } from './admin-area/students-admin/students-admin.component';
 import { ClassesAdminComponent } from './admin-area/classes-admin/classes-admin.component';
+import { StudentListComponent } from './admin-area/students-admin/student-list/student-list.component';
+import { StudentEditComponent } from './admin-area/students-admin/student-edit/student-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ClassesAdminComponent } from './admin-area/classes-admin/classes-admin.
     StudentAreaComponent,
     SubjectsAdminComponent,
     StudentsAdminComponent,
-    ClassesAdminComponent
+    ClassesAdminComponent,
+    StudentListComponent,
+    StudentEditComponent
   ],
   imports: [
     BrowserModule,
