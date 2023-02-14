@@ -1,4 +1,4 @@
-import {Student} from "../interfaces/studentInterface";
+import {Student} from "../interfaces/student";
 import {formatDate} from "@angular/common";
 
 export const STUDENTS: Student[] = [

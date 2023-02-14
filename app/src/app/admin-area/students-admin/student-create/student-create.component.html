@@ -1,18 +1,26 @@
-<form>
-
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
   <div class="grid">
-
     <label for="firstname">
       Vorname
-      <input type="text" id="firstname" name="firstname" placeholder="Vorname" required>
+      <input type="text" formControlName="firstname" id="firstname" name="firstname" placeholder="Vorname" required>
+      <div *ngIf="submitted && registerForm.controls.firstname.errors" class="form-error">
+        <small *ngIf="registerForm.controls.firstname.errors.required">Bitte Vornamen eingeben</small>
+      </div>
+
     </label>
     <label for="lastname">
       Nachname
-      <input type="text" id="lastname" name="lastname" placeholder="Nachname" required>
+      <input type="text" formControlName="lastname" id="lastname" name="lastname" placeholder="Nachname" required>
+      <div *ngIf="submitted && registerForm.controls.firstname.errors" class="form-error">
+        <small *ngIf="registerForm.controls.firstname.errors.required">Bitte Nachnamen eingeben</small>
+      </div>
     </label>
   </div>
   <label for="email">Email
-    <input type="email" id="email" name="email" placeholder="Email" required>
+    <input type="email" formControlName="email" id="email" name="email" placeholder="Email" required>
+    <div *ngIf="submitted && registerForm.controls.firstname.errors" class="form-error">
+      <small *ngIf="registerForm.controls.firstname.errors.required">Bitte gültige E-Mail-Adresse eingeben</small>
+    </div>
   </label>
   <label for="lastname">
     Geburtsdatum
@@ -20,7 +28,7 @@
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" formControlName="birthdate">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>

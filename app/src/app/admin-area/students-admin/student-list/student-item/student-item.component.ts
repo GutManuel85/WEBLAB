@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Student} from "../../../../interfaces/studentInterface";
+import {Student} from "../../../../interfaces/student";
 
 @Component({
   selector: 'app-student-item',

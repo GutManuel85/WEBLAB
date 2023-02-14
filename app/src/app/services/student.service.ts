@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Student} from "../interfaces/studentInterface";
+import {Student} from "../interfaces/student";
 import {STUDENTS} from "../mocks/students";
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,13 @@ export class StudentService {
   constructor() {
   }
 
-  getStudents(): Student[] {
-    return STUDENTS
+  getStudents(): Observable<Student[]> {
+    return of(STUDENTS);
+  }
+
+  addStudent(student :Student): void {
+    STUDENTS.push(student);
+    console.log(STUDENTS);
   }
 }
 

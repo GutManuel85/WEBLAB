@@ -1,3 +1,9 @@
+:root{
+  --blue: #1095C1FF;
+  --error: #EF0107;
+}
+
+
 h1{
   text-align: center;
   color: var(--primary);
