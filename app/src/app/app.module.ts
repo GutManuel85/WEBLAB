@@ -28,12 +28,15 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
-import { HomeComponent } from './home/home.component';
-import { SubjectCreateComponent } from './admin-area/subjects-admin/subject-create/subject-create.component';
-import { SubjectListComponent } from './admin-area/subjects-admin/subject-list/subject-list.component';
-import { SubjectItemComponent } from './admin-area/subjects-admin/subject-list/subject-item/subject-item.component';
+import {HomeComponent} from './home/home.component';
+import {SubjectCreateComponent} from './admin-area/subjects-admin/subject-create/subject-create.component';
+import {SubjectListComponent} from './admin-area/subjects-admin/subject-list/subject-list.component';
+import {SubjectItemComponent} from './admin-area/subjects-admin/subject-list/subject-item/subject-item.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-
+import {
+  SubjectStudentMappingComponent
+} from './admin-area/students-admin/subject-student-mapping/subject-student-mapping.component';
+import {CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
 
 
 @NgModule({
@@ -54,7 +57,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
     HomeComponent,
     SubjectCreateComponent,
     SubjectListComponent,
-    SubjectItemComponent
+    SubjectItemComponent,
+    SubjectStudentMappingComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatNativeDateModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    CdkDropList,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

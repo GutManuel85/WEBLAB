@@ -42,7 +42,7 @@ export class StudentCreateComponent {
   }
 
   createStudent(firstname :string, lastname :string, email :string, birthdate :string) :void{
-    let student :Student = new Student(firstname, lastname, email, birthdate);
+    let student :Student = new Student(firstname, lastname, email, birthdate, []);
     this.studentService.addStudent(student);
 
 }

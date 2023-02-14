@@ -1,0 +1,27 @@
+<div class="example-container">
+  <h2>Nicht eingeschrieben</h2>
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="notEnrolled"
+    [cdkDropListConnectedTo]="[doneList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let subject of notEnrolled" cdkDrag>{{subject.name}} ({{subject.code}})</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Eingeschrieben</h2>
+
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="enrolled"
+    [cdkDropListConnectedTo]="[todoList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let subject of enrolled" cdkDrag>{{subject.name}} ({{subject.code}})</div>
+  </div>
+</div>
