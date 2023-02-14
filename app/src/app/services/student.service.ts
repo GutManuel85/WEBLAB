@@ -21,6 +21,13 @@ export class StudentService {
     console.log(STUDENTS);
   }
 
+  deleteStudent(student :Student): void{
+    const index = STUDENTS.findIndex(studentObj => studentObj.id === student.id);
+    if(index !== -1){
+      STUDENTS.splice(index, 1)
+    }
+  }
+
   getEnrolledSubjects(student :Student) :Observable<Subject[]>{
     return of(student.enrolledSubjects)
   }
