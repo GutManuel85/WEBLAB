@@ -1,0 +1,32 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+  <div class="grid">
+    <label for="subjectName">
+      Fachbezeichnung*
+      <input type="text" formControlName="subjectName" id="subjectName" name="subjectName" placeholder="z.B. Mathematik" required>
+      <div *ngIf="submitted && registerForm.controls.subjectName.errors" class="form-error">
+        <small *ngIf="registerForm.controls.subjectName.errors.required">Bitte Fachbezeichnung eingeben</small>
+      </div>
+    </label>
+    <label for="subjectCode">
+      <em data-tooltip="Abkürzung mit mindestens 3 Grossbuchstaben" data-placement="right">Fachkennung*</em>
+      <input type="text" formControlName="subjectCode" id="subjectCode" name="subjectCode"
+             placeholder="z.B. MATH" minlength="3" required>
+      <div *ngIf="submitted && registerForm.controls.subjectCode.errors" class="form-error">
+        <small *ngIf="registerForm.controls.subjectCode.errors.required">Bitte Fachkennung eingeben</small>
+        <small *ngIf="!registerForm.controls.subjectCode.errors.required">Bitte mind. 3 Grossbuchstaben eingeben</small>
+      </div>
+    </label>
+  </div>
+  <label for="description">Beschreibung (max. {{descriptionMaxLength}} Zeichen)
+    <input type="text" formControlName="description" id="description" name="description"
+           placeholder="Optionale Beschreibung" maxlength="{{descriptionMaxLength}}">
+    <div *ngIf="submitted && registerForm.controls.description.errors" class="form-error">
+      <small *ngIf="registerForm.controls.description.errors.required">Maximal erlaubte Zeichenzahl von {{descriptionMaxLength}} ist überschritten</small>
+    </div>
+  </label>
+  <button type="submit">Erfassen</button>
+</form>
+
+
+
+

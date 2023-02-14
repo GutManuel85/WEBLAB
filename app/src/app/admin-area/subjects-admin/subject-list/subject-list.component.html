@@ -1,0 +1,9 @@
+<label for="search">
+  Suche
+</label>
+<input type="text" id="search" name="search" placeholder="Suchtext eingeben"
+       [(ngModel)]="mySearchString">
+
+<app-subject-item *ngFor="let subjectElement of subjects"
+                  [subject]="subjectElement" [searchString]="mySearchString">
+</app-subject-item>

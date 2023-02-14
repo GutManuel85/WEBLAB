@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Student} from "../interfaces/student";
+import {Student} from "../dataClasses/student";
 import {STUDENTS} from "../mocks/students";
 import {Observable, of} from 'rxjs';
 

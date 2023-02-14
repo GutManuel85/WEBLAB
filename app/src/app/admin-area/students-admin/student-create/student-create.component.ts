@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {StudentService} from "../../../services/student.service";
-import {Student} from "../../../interfaces/student";
+import {Student} from "../../../dataClasses/student";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {formatDate} from "@angular/common";
 

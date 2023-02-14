@@ -29,6 +29,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
 import { HomeComponent } from './home/home.component';
+import { SubjectCreateComponent } from './admin-area/subjects-admin/subject-create/subject-create.component';
+import { SubjectListComponent } from './admin-area/subjects-admin/subject-list/subject-list.component';
+import { SubjectItemComponent } from './admin-area/subjects-admin/subject-list/subject-item/subject-item.component';
 
 
 
@@ -47,7 +50,10 @@ import { HomeComponent } from './home/home.component';
     StudentCreateComponent,
     PlaygroundComponent,
     StudentItemComponent,
-    HomeComponent
+    HomeComponent,
+    SubjectCreateComponent,
+    SubjectListComponent,
+    SubjectItemComponent
   ],
   imports: [
     BrowserModule,

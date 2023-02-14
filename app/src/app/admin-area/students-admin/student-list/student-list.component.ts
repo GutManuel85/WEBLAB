@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {StudentService} from "../../../services/student.service";
-import {Student} from "../../../interfaces/student";
+import {Student} from "../../../dataClasses/student";
 
 @Component({
   selector: 'app-student-list',
@@ -24,5 +24,4 @@ export class StudentListComponent {
     this.studentService.getStudents()
       .subscribe(students => this.students = students);
   }
-
 }

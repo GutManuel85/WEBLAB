@@ -1,29 +1,28 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
   <div class="grid">
     <label for="firstname">
-      Vorname
+      Vorname*
       <input type="text" formControlName="firstname" id="firstname" name="firstname" placeholder="Vorname" required>
       <div *ngIf="submitted && registerForm.controls.firstname.errors" class="form-error">
         <small *ngIf="registerForm.controls.firstname.errors.required">Bitte Vornamen eingeben</small>
       </div>
-
     </label>
     <label for="lastname">
-      Nachname
+      Nachname*
       <input type="text" formControlName="lastname" id="lastname" name="lastname" placeholder="Nachname" required>
-      <div *ngIf="submitted && registerForm.controls.firstname.errors" class="form-error">
-        <small *ngIf="registerForm.controls.firstname.errors.required">Bitte Nachnamen eingeben</small>
+      <div *ngIf="submitted && registerForm.controls.lastname.errors" class="form-error">
+        <small *ngIf="registerForm.controls.lastname.errors.required">Bitte Nachnamen eingeben</small>
       </div>
     </label>
   </div>
-  <label for="email">Email
+  <label for="email">Email*
     <input type="email" formControlName="email" id="email" name="email" placeholder="Email" required>
-    <div *ngIf="submitted && registerForm.controls.firstname.errors" class="form-error">
-      <small *ngIf="registerForm.controls.firstname.errors.required">Bitte gültige E-Mail-Adresse eingeben</small>
+    <div *ngIf="submitted && registerForm.controls.email.errors" class="form-error">
+      <small *ngIf="registerForm.controls.email.errors.email">Bitte gültige E-Mail-Adresse eingeben</small>
     </div>
   </label>
   <label for="lastname">
-    Geburtsdatum
+    Geburtsdatum*
     <br>
     <br>
     <mat-form-field appearance="fill">
@@ -36,7 +35,6 @@
   </label>
   <br>
   <button type="submit">Erfassen</button>
-
 </form>
 
 

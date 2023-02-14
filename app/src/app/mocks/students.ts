@@ -1,4 +1,4 @@
-import {Student} from "../interfaces/student";
+import {Student} from "../dataClasses/student";
 import {formatDate} from "@angular/common";
 
 export const STUDENTS: Student[] = [
