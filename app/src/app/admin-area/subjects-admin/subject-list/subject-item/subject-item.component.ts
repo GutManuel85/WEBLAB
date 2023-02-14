@@ -8,6 +8,8 @@ import {Subject} from "../../../../dataClasses/subject";
 })
 export class SubjectItemComponent {
 
+  panelOpenState = false;
+
   @Input() subject: Subject;
   @Input() searchString: string;
 

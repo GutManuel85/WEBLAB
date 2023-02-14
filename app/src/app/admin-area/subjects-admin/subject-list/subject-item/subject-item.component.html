@@ -9,10 +9,17 @@
   <mat-card-content>
     <p>ID: {{subject.id}}</p>
     <p>Fachkennung: {{subject.code}}</p>
-    <button type="button" class="collapsible">Beschreibung</button>
-    <div class="content">
-      <p>{{subject.description}}</p>
-    </div>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header id="panel-header">
+          <mat-panel-title>
+            Beschreibung
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="description">{{subject.description}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
     <br>
   </mat-card-content>
   <mat-card-actions>
