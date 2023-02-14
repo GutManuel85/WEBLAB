@@ -22,3 +22,10 @@ ng generate component header       ::Shortcut ist ng g c header
 *********Create Service************
 :: manuell einen Ordner services erstellen
 ng generate service student
+
+*********Angular Material prebuild themes************
+:: prebuild themes können angepasst werden. Hier wird inigo-pink.css verwendet. Nach der Anpassung muss folgendes gemacht werden
+CTRL C              :: um Server zu stoppen
+ng cache clean      :: !!!!Wichtig, sonst sind Elemente gecached und Änderungen werden nicht wirksam
+ng serve            :: um Server neu zu starten
+
