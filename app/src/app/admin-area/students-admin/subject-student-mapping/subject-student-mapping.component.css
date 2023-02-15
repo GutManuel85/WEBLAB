@@ -59,6 +59,7 @@ h1{
 
 article{
   padding-top: 2px;
+  max-width: 930px;
 }
 
 #action-area{
@@ -68,7 +69,7 @@ article{
 
 .action-button{
   max-width: 150px;
-  margin-right: 10px;
+  margin-right: 25px;
 }
 
 #save{

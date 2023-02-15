@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Student} from "../dataClasses/student";
-import {STUDENTS} from "../mocks/students";
+import {STUDENTS} from "../mocks/constructedStudents";
 import {Observable, of} from 'rxjs';
 import {Subject} from "../dataClasses/subject";
 

@@ -14,7 +14,7 @@ export const STUDENTS: Student[] = [
       name: "Mathematik",
       code: "MATH",
       description: "Im Fach Mathematik wird Algebra und Geometrie behandelt. Dabei werden theorethische Inputs vermittelt und praktische Übungen gemacht",
-    }]
+    }],
   },
   {
     id: "1",

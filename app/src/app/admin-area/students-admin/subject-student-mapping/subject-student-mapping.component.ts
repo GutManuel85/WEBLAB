@@ -5,7 +5,6 @@ import {Student} from "../../../dataClasses/student";
 import {Subject} from "../../../dataClasses/subject";
 import {StudentService} from "../../../services/student.service";
 import {filter, from, Observable} from "rxjs";
-import {STUDENTS} from "../../../mocks/students";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from '@angular/common';
 
@@ -19,6 +18,7 @@ export class SubjectStudentMappingComponent {
   @Input() student?: Student;
   notEnrolled: any[] = [];
   enrolled: any[] = [];
+  tempEnrolled: any[] = [];
 
   constructor(
     private subjectService: SubjectService,
@@ -29,15 +29,17 @@ export class SubjectStudentMappingComponent {
   }
 
   ngOnInit() {
+    console.log("called ngOnInit()")
     this.getStudent();
     console.log(`${this.student.lastname} ${this.student.firstname}`)
-    this.getEnrolledSubjects(STUDENTS[this.student.id]);
+    this.getEnrolledSubjects(this.student);
     console.log(this.enrolled);
-    this.getNotEnrolledSubjects(STUDENTS[this.student.id]);
+    this.getNotEnrolledSubjects(this.student);
     console.log(this.notEnrolled);
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    console.log("called drop()")
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -48,20 +50,33 @@ export class SubjectStudentMappingComponent {
         event.currentIndex,
       );
     }
+    console.log(event.container.id);
+    if (event.container.id === "cdk-drop-list-1") {
+      this.tempEnrolled = event.container.data;
+    }
+    console.log("Log from the tempEnrolled")
+    console.log(this.tempEnrolled);
+    console.log('Log from the enrolled');
+    console.log(this.enrolled);
+    console.log('Log from the notEnrolled');
+    console.log(this.notEnrolled);
   }
 
   getStudent(): void {
+    console.log("called getStudent()");
     const id = this.route.snapshot.paramMap.get('id');
     this.studentService.getStudent(id)
       .subscribe(student => this.student = student);
   }
 
   getEnrolledSubjects(student: Student): void {
+    console.log("getEnrolledSubjects()");
     this.studentService.getEnrolledSubjects(student)
       .subscribe(subjects => this.enrolled = subjects);
   }
 
   getNotEnrolledSubjects(student: Student): void {
+    console.log("getNotEnrolledSubjects()");
     const allSubjects: Observable<Subject[]> = this.subjectService.getSubjects();
     let allArray;
     allSubjects.subscribe(value => allArray = value);
@@ -70,13 +85,28 @@ export class SubjectStudentMappingComponent {
   }
 
   goBack(): void {
+    console.log("called back()");
     this.location.back();
   }
 
+  save(): void{
+    console.log("called save()");
+    this.enrolled = this.tempEnrolled;
+    this.getEnrolledSubjects(this.student);
+    console.log('Log from the enrolled');
+    console.log(this.enrolled);
+    console.log('Log from the notEnrolled');
+    console.log(this.notEnrolled);
+    console.log('Log the saved student');
+    console.log(this.student);
+  }
+
   onButtonClick($event: MouseEvent) {
+    console.log("called onButtonClick()");
     const target = $event.currentTarget as HTMLButtonElement;
     if (target.id === 'save') {
       console.log(`save was clicked`);
+      this.save();
     } else if (target.id === 'back') {
       console.log(`back was clicked`);
       this.goBack();

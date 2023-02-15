@@ -20,4 +20,8 @@ export class Student implements StudentInterface{
     this.enrolledSubjects = enrolledSubjects;
   }
 
+  setEnrolledSubjects(enrolledSubjects: Subject[]) :void{
+    this.enrolledSubjects = enrolledSubjects;
+  }
+
 }
