@@ -15,7 +15,9 @@
     <br>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button id="enrollButton" class="button" (click)="onButtonClick($event)">Einschreiben</button>
+    <button routerLink="enroll/{{student.id}}" mat-button id="enrollButton" class="button" (click)="onButtonClick($event)">Einschreiben</button>
     <button mat-button id="deleteButton" class="button" (click)="onButtonClick($event)">Löschen</button>
+    <a routerLink="enroll/{{student.id}}">
+    </a>
   </mat-card-actions>
 </mat-card>

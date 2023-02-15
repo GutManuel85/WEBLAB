@@ -18,10 +18,10 @@ export class StudentItemComponent {
   onButtonClick($event: MouseEvent) {
     const target = $event.currentTarget as HTMLButtonElement;
     if (target.id === 'enrollButton') {
-      console.log("enrollButton clicked");
+      console.log(`enrollButton clicked for student ${this.student.id}`);
     } else if (target.id === 'deleteButton') {
       console.log("deleteButton clicked");
-      //alert(`Wollen Sie {this.student.name} {this.student.name} wirklich löschen`)
+      alert(`Wollen Sie ${this.student.firstname} ${this.student.lastname} wirklich löschen`)
       this.studentService.deleteStudent(this.student)
 
     }

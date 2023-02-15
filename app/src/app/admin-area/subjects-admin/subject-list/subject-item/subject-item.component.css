@@ -6,8 +6,8 @@ mat-panel-title{
   margin-left: 8px;
 }
 
-#panel-header{
-  color: var(--secondary)
+mat-expansion-panel-header{
+  background-color: white !important;
 }
 
 .description {
@@ -16,7 +16,7 @@ mat-panel-title{
 }
 
 .subject-card {
-  max-width: 40%;
+  max-width: 50%;
   min-width: 300px;
   background-color: #F0F0F0;
   margin: 8px;

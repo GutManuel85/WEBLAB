@@ -1,26 +1,27 @@
 .student-card {
-  max-width: 40%;
+  max-width: 50%;
   min-width: 300px;
   background-color: #F0F0F0;
   margin: 8px;
 }
 
-#cardTitle{
+
+#cardTitle {
   color: var(--primary);
 }
 
-.button{
+.button {
   margin-right: 5%;
   margin-left: 5%;
 }
 
-#enrollButton{
+#enrollButton {
   background-color: var(--primary);
   color: white;
   horiz-align: right;
 }
 
-#deleteButton{
+#deleteButton {
   background-color: var(--del-color);
   color: white;
   horiz-align: right;

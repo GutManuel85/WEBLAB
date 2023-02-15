@@ -16,19 +16,23 @@ export class StudentService {
     return of(STUDENTS);
   }
 
-  addStudent(student :Student): void {
+  getStudent(id: string): Observable<Student> {
+    return of(STUDENTS.find(s => s.id === id)!);
+  }
+
+  addStudent(student: Student): void {
     STUDENTS.push(student);
     console.log(STUDENTS);
   }
 
-  deleteStudent(student :Student): void{
+  deleteStudent(student: Student): void {
     const index = STUDENTS.findIndex(studentObj => studentObj.id === student.id);
-    if(index !== -1){
+    if (index !== -1) {
       STUDENTS.splice(index, 1)
     }
   }
 
-  getEnrolledSubjects(student :Student) :Observable<Subject[]>{
+  getEnrolledSubjects(student: Student): Observable<Subject[]> {
     return of(student.enrolledSubjects)
   }
 }

@@ -1,27 +1,34 @@
-<div class="example-container">
-  <h2>Nicht eingeschrieben</h2>
-
-  <div
-    cdkDropList
-    #todoList="cdkDropList"
-    [cdkDropListData]="notEnrolled"
-    [cdkDropListConnectedTo]="[doneList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let subject of notEnrolled" cdkDrag>{{subject.name}} ({{subject.code}})</div>
+<article>
+  <h1>Einschreibung für {{student.firstname}} {{student.lastname}}</h1>
+  <div class="example-container">
+    <h2>Nicht eingeschrieben</h2>
+    <div
+      cdkDropList
+      #notEnrolledList="cdkDropList"
+      [cdkDropListData]="notEnrolled"
+      [cdkDropListConnectedTo]="[enrolledList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let subject of notEnrolled" cdkDrag>{{subject.name}} ({{subject.code}})</div>
+    </div>
   </div>
-</div>
 
-<div class="example-container">
-  <h2>Eingeschrieben</h2>
+  <div class="example-container">
+    <h2>Eingeschrieben</h2>
 
-  <div
-    cdkDropList
-    #doneList="cdkDropList"
-    [cdkDropListData]="enrolled"
-    [cdkDropListConnectedTo]="[todoList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let subject of enrolled" cdkDrag>{{subject.name}} ({{subject.code}})</div>
+    <div
+      cdkDropList
+      #enrolledList="cdkDropList"
+      [cdkDropListData]="enrolled"
+      [cdkDropListConnectedTo]="[notEnrolledList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let subject of enrolled" cdkDrag>{{subject.name}} ({{subject.code}})</div>
+    </div>
   </div>
-</div>
+  <div id="action-area">
+    <button id="back" class="action-button" (click)="onButtonClick($event)">Zurück</button>
+    <button id="save" class="action-button" (click)="onButtonClick($event)">Speichern</button>
+  </div>
+</article>
+

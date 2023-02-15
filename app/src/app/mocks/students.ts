@@ -30,7 +30,7 @@ export const STUDENTS: Student[] = [
     }]
   },
   {
-    id: "0",
+    id: "2",
     firstname: "Joana",
     lastname: "Gutmann",
     email: "joana.gutmann@mymail.ch",
@@ -49,7 +49,7 @@ export const STUDENTS: Student[] = [
       }]
   },
   {
-    id: "1",
+    id: "3",
     firstname: "Johannes",
     lastname: "Meier",
     email: "johannes.meier@mymail.ch",

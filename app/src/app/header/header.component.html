@@ -8,5 +8,7 @@
     <li *ngIf="role === 'admin'"><a routerLink="/classes-admin">Klassen-Verwaltung</a></li>
     <li *ngIf="role === 'admin' || role === 'teacher'"><a routerLink="/teacher">Noten-Erfassung</a></li>
     <li *ngIf="role === 'student'"><a href="#">Meine Noten</a></li>
+    <li><a routerLink="/login">SignOut</a></li>
+
   </ul>
 </nav>
