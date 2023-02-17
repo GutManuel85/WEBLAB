@@ -31,6 +31,12 @@ mat-expansion-panel-header{
   margin-left: 5%;
 }
 
+#gradesButton{
+  background-color: var(--green);
+  color: white;
+  horiz-align: right;
+}
+
 #editButton{
   background-color: var(--primary);
   color: white;

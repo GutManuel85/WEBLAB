@@ -21,9 +21,8 @@ export class StudentItemComponent {
       console.log(`enrollButton clicked for student ${this.student.id}`);
     } else if (target.id === 'deleteButton') {
       console.log("deleteButton clicked");
-      alert(`Wollen Sie ${this.student.firstname} ${this.student.lastname} wirklich löschen`)
+      console.log(`${this.student.firstname} ${this.student.lastname} wurde gelöscht`)
       this.studentService.deleteStudent(this.student)
-
     }
   }
 }

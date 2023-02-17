@@ -53,26 +53,22 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-h1{
+h1 {
   text-align: left;
 }
 
-article{
+article {
   padding-top: 2px;
   max-width: 930px;
 }
 
-#action-area{
+#action-area {
   display: flex;
   justify-content: flex-end;
 }
 
-.action-button{
+.action-button {
   max-width: 150px;
   margin-right: 25px;
 }
 
-#save{
-  background-color: var(--save);
-  border-color: var(--save);
-}

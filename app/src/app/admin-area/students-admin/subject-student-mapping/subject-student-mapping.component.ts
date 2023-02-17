@@ -104,11 +104,9 @@ export class SubjectStudentMappingComponent {
   onButtonClick($event: MouseEvent) {
     console.log("called onButtonClick()");
     const target = $event.currentTarget as HTMLButtonElement;
-    if (target.id === 'save') {
+    if (target.id === 'ok') {
       console.log(`save was clicked`);
       this.save();
-    } else if (target.id === 'back') {
-      console.log(`back was clicked`);
       this.goBack();
     }
   }
