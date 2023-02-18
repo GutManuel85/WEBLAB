@@ -37,6 +37,7 @@ import {
   SubjectStudentMappingComponent
 } from './admin-area/students-admin/subject-student-mapping/subject-student-mapping.component';
 import {CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import {CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
     ReactiveFormsModule,
     MatExpansionModule,
     CdkDropList,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -27,6 +27,7 @@ export class SubjectCreateComponent {
 
   onSubmit(data: any) {
     this.submitted = true;
+    this.subjectService.getSubjects();
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
@@ -39,6 +40,7 @@ export class SubjectCreateComponent {
     this.createSubject(data.subjectName, subjectCode, data.description)}
 
   createSubject(subjectName, subjectCode, description): void {
+    console.log("createSubject called")
     let subject: Subject = new Subject(subjectName, subjectCode, description);
     this.subjectService.addSubject(subject);
   }

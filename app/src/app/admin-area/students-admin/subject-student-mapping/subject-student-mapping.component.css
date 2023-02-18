@@ -72,3 +72,8 @@ article {
   margin-right: 25px;
 }
 
+#cancel{
+  background-color: var(--del-color);
+  border-color: var(--del-color);
+}
+

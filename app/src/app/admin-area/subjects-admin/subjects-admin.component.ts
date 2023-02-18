@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {MatTabChangeEvent, MatTabGroup} from "@angular/material/tabs";
+import {SubjectService} from "../../services/subject.service";
 
 @Component({
   selector: 'app-subjects-admin',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./subjects-admin.component.css']
 })
 export class SubjectsAdminComponent {
+  @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
+  constructor(private subjectService: SubjectService) {
+  }
 }

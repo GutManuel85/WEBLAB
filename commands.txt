@@ -29,3 +29,11 @@ CTRL C              :: um Server zu stoppen
 ng cache clean      :: !!!!Wichtig, sonst sind Elemente gecached und Änderungen werden nicht wirksam
 ng serve            :: um Server neu zu starten
 
+
+*********node.js*********************
+cd ./app
+npm install --save express
+npm install --save-dev nodemon ::Startet node-server bei Änderungen automatisch
+npm run start:server
+:: Outputs können hier gesehen werden. http://localhost:4200/  ::Port wird in Proxy-File proxy.conf.json umgebogen von 3000 auf 4200
+

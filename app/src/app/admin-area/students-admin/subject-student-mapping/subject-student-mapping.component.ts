@@ -4,7 +4,7 @@ import {SubjectService} from "../../../services/subject.service";
 import {Student} from "../../../dataClasses/student";
 import {Subject} from "../../../dataClasses/subject";
 import {StudentService} from "../../../services/student.service";
-import {filter, from, Observable} from "rxjs";
+import {filter, from, map, Observable} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from '@angular/common';
 
@@ -29,13 +29,20 @@ export class SubjectStudentMappingComponent {
   }
 
   ngOnInit() {
-    console.log("called ngOnInit()")
-    this.getStudent();
-    console.log(`${this.student.lastname} ${this.student.firstname}`)
-    this.getEnrolledSubjects(this.student);
-    console.log(this.enrolled);
-    this.getNotEnrolledSubjects(this.student);
-    console.log(this.notEnrolled);
+    console.log("called ngOnInit()");
+
+    this.getStudent().subscribe((student) => {
+      this.student = student;
+      console.log(`${this.student.lastname} ${this.student.firstname}`);
+      this.getEnrolledSubjects(this.student).subscribe((enrolled) => {
+        this.enrolled = enrolled;
+        console.log(this.enrolled);
+      });
+      this.getNotEnrolledSubjects(this.student).subscribe((notEnrolled) => {
+        this.notEnrolled = notEnrolled;
+        console.log(this.notEnrolled);
+      });
+    });
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -62,26 +69,25 @@ export class SubjectStudentMappingComponent {
     console.log(this.notEnrolled);
   }
 
-  getStudent(): void {
+  getStudent(): Observable<Student> {
     console.log("called getStudent()");
     const id = this.route.snapshot.paramMap.get('id');
-    this.studentService.getStudent(id)
-      .subscribe(student => this.student = student);
+    console.log(id);
+    return this.studentService.getStudent(id);
   }
 
-  getEnrolledSubjects(student: Student): void {
+
+  getEnrolledSubjects(student: Student): Observable<Subject[]> {
     console.log("getEnrolledSubjects()");
-    this.studentService.getEnrolledSubjects(student)
-      .subscribe(subjects => this.enrolled = subjects);
+    return this.studentService.getEnrolledSubjects(student);
   }
 
-  getNotEnrolledSubjects(student: Student): void {
+
+  getNotEnrolledSubjects(student: Student): Observable<Subject[]> {
     console.log("getNotEnrolledSubjects()");
-    const allSubjects: Observable<Subject[]> = this.subjectService.getSubjects();
-    let allArray;
-    allSubjects.subscribe(value => allArray = value);
-    console.log(allArray);
-    this.notEnrolled = allArray.filter(a => !this.enrolled.some(b => a.id === b.id));
+    return this.subjectService.getSubjects().pipe(
+      map(allArray => allArray.filter(a => !this.enrolled.some(b => a.id === b.id)))
+    );
   }
 
   goBack(): void {
@@ -99,6 +105,10 @@ export class SubjectStudentMappingComponent {
     console.log(this.notEnrolled);
     console.log('Log the saved student');
     console.log(this.student);
+    this.studentService.updateStudent(this.student).subscribe(response => {
+      console.log("Student updated");
+      console.log(response);
+    });
   }
 
   onButtonClick($event: MouseEvent) {
@@ -108,6 +118,9 @@ export class SubjectStudentMappingComponent {
       console.log(`save was clicked`);
       this.save();
       this.goBack();
+    }else{
+      console.log('cancel was clicked');
+      this.goBack()
     }
   }
 }

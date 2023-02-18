@@ -24,5 +24,6 @@ export class SubjectListComponent {
     this.subjectService.getSubjects()
       .subscribe(subjects => this.subjects = subjects);
   }
+
 }
 
