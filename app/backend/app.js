@@ -48,7 +48,8 @@ const students = [
       name: "Mathematik",
       code: "MATH",
       description: "Im Fach Mathematik wird Algebra und Geometrie behandelt. Dabei werden theorethische Inputs vermittelt und praktische Übungen gemacht",
-    }]
+    }],
+    grades: [{subjectId: "1", gradeValue: 5.5}, {subjectId: "2", gradeValue: 5}]
   },
   {
     id: "2",
@@ -67,7 +68,8 @@ const students = [
         name: "Englisch",
         code: "ENG",
         description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum ",
-      }]
+      }],
+    grades: [{subjectId: "1", gradeValue: 5.5}, {subjectId: "2", gradeValue: 5}]
   },
   {
     id: "3",
@@ -81,7 +83,8 @@ const students = [
         name: "Englisch",
         code: "ENG",
         description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum ",
-      }]
+      }],
+    grades: [{subjectId: "1", gradeValue: 5.5}, {subjectId: "2", gradeValue: 5}]
   },
 
 ]
@@ -170,7 +173,7 @@ app.put('/v1/student/:id', (req, res, next) => {
 
   if (index !== -1) {
     // Update the student with the given ID
-    students[index] = { ...students[index], ...requestBody };
+    students[index] = {...students[index], ...requestBody};
 
     // Return the updated student in the response
     res.json(students[index]);

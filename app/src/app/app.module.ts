@@ -38,6 +38,8 @@ import {
 } from './admin-area/students-admin/subject-student-mapping/subject-student-mapping.component';
 import {CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
 import {HttpClientModule} from "@angular/common/http";
+import { SubjectGradesComponent } from './admin-area/subjects-admin/subject-grades/subject-grades.component';
+import { GradeFormComponent } from './admin-area/subjects-admin/subject-grades/grade-form/grade-form.component';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import {HttpClientModule} from "@angular/common/http";
     SubjectCreateComponent,
     SubjectListComponent,
     SubjectItemComponent,
-    SubjectStudentMappingComponent
+    SubjectStudentMappingComponent,
+    SubjectGradesComponent,
+    GradeFormComponent
   ],
   imports: [
     BrowserModule,

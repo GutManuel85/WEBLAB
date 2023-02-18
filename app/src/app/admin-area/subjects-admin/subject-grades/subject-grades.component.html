@@ -1,0 +1,13 @@
+<article>
+  <h1>Notenerfassung für {{subject.name}}</h1>
+  <div class="example-container">
+    <app-grade-form *ngFor="let student of enrolledStudents" [student]="student"></app-grade-form>
+    <div id="action-area">
+      <button id="cancel" class="action-button" (click)="onButtonClick($event)">
+        Abbrechen
+      </button>
+      <button id="ok" class="action-button" (click)="onButtonClick($event)">Speichern</button>
+    </div>
+  </div>
+</article>
+

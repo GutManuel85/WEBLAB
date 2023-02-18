@@ -32,6 +32,10 @@ export class SubjectService {
       );
   }
 
+  getSubject(id: string): Observable<any> {
+    return this.http.get<any>(`/api/v1/subject/${id}`);
+  }
+
   addSubject(subject: Subject): void {
     console.log("addSubject called");
     this.http.post('/api/v1/subjects', subject,

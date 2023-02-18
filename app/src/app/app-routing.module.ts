@@ -9,6 +9,7 @@ import {
   SubjectStudentMappingComponent
 } from "./admin-area/students-admin/subject-student-mapping/subject-student-mapping.component";
 import {LogInComponent} from "./log-in/log-in.component";
+import {SubjectGradesComponent} from "./admin-area/subjects-admin/subject-grades/subject-grades.component";
 
 const routes: Routes = [
   { path: 'login', component: LogInComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'students-admin/enroll', component: SubjectStudentMappingComponent},
   { path: 'students-admin/enroll/:id', component: SubjectStudentMappingComponent},
   { path: 'subjects-admin', component: SubjectsAdminComponent },
+  { path: 'subjects-admin/grades/:id', component: SubjectGradesComponent},
   { path: 'classes-admin', component: ClassesAdminComponent},
   { path: 'teacher', component: TeacherAreaComponent},
 ];
