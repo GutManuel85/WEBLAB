@@ -9,5 +9,15 @@ import {Student} from "../../../../dataClasses/student";
 export class GradeFormComponent {
 
   @Input() student: Student;
+  @Input() gradeValue: number;
 
+  constructor() {
+  }
+
+  getGradeInput(studentID: string): number {
+    const gradeInput = document.getElementById(`gradeInput_${studentID}`) as HTMLInputElement;
+    return Number(gradeInput.value);
+  }
 }
+
+

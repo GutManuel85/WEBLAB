@@ -40,6 +40,7 @@ import {CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
 import {HttpClientModule} from "@angular/common/http";
 import { SubjectGradesComponent } from './admin-area/subjects-admin/subject-grades/subject-grades.component';
 import { GradeFormComponent } from './admin-area/subjects-admin/subject-grades/grade-form/grade-form.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -65,27 +66,28 @@ import { GradeFormComponent } from './admin-area/subjects-admin/subject-grades/g
     SubjectGradesComponent,
     GradeFormComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatButtonModule,
-    MatCardModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    CdkDropList,
-    DragDropModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatSlideToggleModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        MatButtonModule,
+        MatCardModule,
+        MatTabsModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        CdkDropList,
+        DragDropModule,
+        HttpClientModule,
+        MatSelectModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

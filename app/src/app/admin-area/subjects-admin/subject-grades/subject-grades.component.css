@@ -9,6 +9,10 @@
   margin-right: 25px;
 }
 
+#gradeInput {
+  margin-right: 25px;
+}
+
 #cancel{
   background-color: var(--del-color);
   border-color: var(--del-color);

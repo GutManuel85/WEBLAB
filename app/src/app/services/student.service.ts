@@ -13,7 +13,7 @@ export class StudentService {
   students: Student[];
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
   constructor(private http: HttpClient) {
@@ -69,9 +69,19 @@ export class StudentService {
       );
   }
 
-
   getEnrolledSubjects(student: Student): Observable<Subject[]> {
     return of(student.enrolledSubjects);
+  }
+
+  addGrade(subjectId: string, gradeValue: number, studentId: string): void {
+    console.log("addGrades from the student service");
+    let url = '/api/v1/student/grade';
+    console.log(url);
+    this.http.post(url, {subjectId, gradeValue, studentId})
+      .subscribe(
+        () => console.log('Student added successfully.'),
+        error => console.error('Error adding student:', error)
+      );
   }
 }
 

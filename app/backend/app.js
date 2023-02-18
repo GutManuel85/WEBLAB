@@ -197,4 +197,17 @@ app.delete('/v1/student/:id', (req, res, next) => {
   res.end();
 });
 
+app.post('/v1/student/grade', (req, res, next) => {
+  const elements = students.filter(student => student.id === req.body.studentId);
+  if (elements) {
+    console.log(elements)
+    elements[0].grades.push({"subjectId": req.body.subjectId, "gradeValue": req.body.gradeValue })
+    res.status(201);
+    res.send(elements);
+  } else {
+    res.status(500);
+  }
+  res.end();
+});
+
 module.exports = app;

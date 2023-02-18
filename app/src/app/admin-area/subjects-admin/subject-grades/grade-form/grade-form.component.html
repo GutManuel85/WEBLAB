@@ -3,7 +3,7 @@
   <p>{{student.firstname}} {{student.lastname}}</p>
   <label>
     Prüfungsnote:
-    <input type="text">
+    <input type="text" id="gradeInput_{{student.id}}" [(ngModel)]="gradeValue">
   </label>
   <hr>
   <br>
