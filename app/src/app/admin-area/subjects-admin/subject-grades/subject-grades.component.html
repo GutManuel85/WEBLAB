@@ -6,7 +6,7 @@
       <label><h3>Eingeschriebene Schüler:</h3></label>
       <mat-form-field>
         <mat-select placeholder="Bitte auswählen" formControlName="studentFormControl" [(ngModel)]="student" required>
-          <mat-option *ngFor="let student of enrolledStudents" value="{{student.id}}">
+          <mat-option *ngFor="let student of enrolledStudents" value="{{student}}">
             {{student.firstname}} {{student.lastname}}
           </mat-option>
           <small *ngIf="submitted && gradeForm.controls.studentFormControl.errors.required">Bitte Nachnamen eingeben</small>

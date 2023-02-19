@@ -37,3 +37,8 @@ npm install --save-dev nodemon ::Startet node-server bei Änderungen automatisch
 npm run start:server
 :: Outputs können hier gesehen werden. http://localhost:4200/  ::Port wird in Proxy-File proxy.conf.json umgebogen von 3000 auf 4200
 
+
+*********MongoDB*********************
+cd ./app
+npm install --save mongodb
+npm install --save mongoose

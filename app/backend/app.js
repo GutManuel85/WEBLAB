@@ -1,7 +1,21 @@
 const express = require('express');
-const app = express();
 const {v4: uuidv4} = require('uuid');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose')
+mongoose.set('strictQuery', false);
+
+const Subject = require('./models/subject')
+
+const app = express();
+
+mongoose.connect('mongodb+srv://AdminUser:amgNDdq5MdB4sAcr@cluster0.qbv4oji.mongodb.net/gradeUp?retryWrites=true&w=majority')
+  .then(() => {
+    console.log('Connected to database');
+  })
+  .catch((error) => {
+    console.log('Connection failed');
+    console.log(error);
+  });
 
 const subjects = [
   {
@@ -94,20 +108,23 @@ app.use(bodyParser.urlencoded({extended: true})); // Parse URL-encoded bodies
 
 
 app.get('/v1/subjects', (req, res, next) => {
-  const result = res.body;
-  if (result !== null) {
-    res.status(200).json({
-      operationStatus: 'OK',
-      subjects: subjects
+  Subject.find()
+    .then(documents => {
+      console.log(documents);
+      if (documents !== null) {
+        res.status(200).json({
+          operationStatus: 'OK',
+          subjects: documents
+        });
+        res.end();
+      } else {
+        res.status(500).json({
+          operationStatus: 'NOK',
+          subjects: documents
+        });
+        res.end();
+      }
     });
-    res.end();
-  } else {
-    res.status(500).json({
-      operationStatus: 'NOK',
-      subjects: subjects
-    });
-    res.end();
-  }
 })
 
 app.get('/v1/subject/:id', (req, res, next) => {
@@ -121,8 +138,19 @@ app.get('/v1/subject/:id', (req, res, next) => {
 });
 
 app.post("/v1/subjects", (req, res) => {
+  const date = new Date();
+  date.setHours(date.getHours() + 1);
+  const subject = new Subject({
+    id: req.body.id,
+    name: req.body.name,
+    code: req.body.code,
+    description: req.body.description,
+    timestamp: date,
+  })
+  console.log(subject);
+  subject.save();
   const requestBody = req.body;
-  console.log(requestBody);
+  //console.log(requestBody);
   subjects.push(requestBody);
   res.status(201);
   res.end();
@@ -201,7 +229,7 @@ app.post('/v1/student/grade', (req, res, next) => {
   const elements = students.filter(student => student.id === req.body.studentId);
   if (elements) {
     console.log(elements)
-    elements[0].grades.push({"subjectId": req.body.subjectId, "gradeValue": req.body.gradeValue })
+    elements[0].grades.push({"subjectId": req.body.subjectId, "gradeValue": req.body.gradeValue})
     res.status(201);
     res.send(elements);
   } else {
