@@ -18,6 +18,7 @@ mongoose.connect('mongodb+srv://AdminUser:amgNDdq5MdB4sAcr@cluster0.qbv4oji.mong
     console.log(error);
   });
 
+//ToDo: entfernen
 const students = [
   {
     id: "1",
@@ -166,7 +167,6 @@ app.put('/v1/student/:id', (req, res, next) => {
 });
 
 app.delete('/v1/student/:id', (req, res, next) => {
-  //ToDo: DB Anbindung: Deshalb funktioniert momentan auch Einschreibung in Fach nicht
   Student.findOneAndDelete({id: req.params.id}, (error, documents) => {
     if (error){
       console.log(error);
@@ -180,8 +180,9 @@ app.delete('/v1/student/:id', (req, res, next) => {
   });
 });
 
-app.post('/v1/student/grade', (req, res, next) => {
-  //ToDo: DB Anbindung: Deshalb funktioniert momentan auch Einschreibung in Fach nicht
+
+//ToDo: Vermutlich nicht gebraucht
+/*app.post('/v1/student/grade', (req, res, next) => {
   const elements = students.filter(student => student.id === req.body.studentId);
   if (elements) {
     console.log(elements)
@@ -192,7 +193,7 @@ app.post('/v1/student/grade', (req, res, next) => {
     res.status(500);
   }
   res.end();
-});
+});*/
 
 module.exports = app;
 

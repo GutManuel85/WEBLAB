@@ -4,6 +4,7 @@ import {Student} from "../dataClasses/student";
 import {STUDENTS} from "../mocks/constructedStudents"; //ToDo: Ausbauen
 import {map, Observable, of, tap} from 'rxjs';
 import {Subject} from "../dataClasses/subject";
+import {Grade} from "../dataClasses/grade";
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class StudentService {
       );
   }
 
-  getStudent(id: string): Observable<any> {
+  getStudent(id: string): Observable<Student> {
     return this.http.get<any>(`/api/v1/student/${id}`);
   }
 
@@ -74,14 +75,24 @@ export class StudentService {
   }
 
   addGrade(subjectId: string, gradeValue: number, studentId: string): void {
-    console.log("addGrades from the student service");
-    let url = '/api/v1/student/grade';
-    console.log(url);
-    this.http.post(url, {subjectId, gradeValue, studentId})
-      .subscribe(
-        () => console.log('Student added successfully.'),
-        error => console.error('Error adding student:', error)
-      );
+    this.getStudent(studentId).subscribe((student) => {
+      student.grades.push(new Grade(subjectId, gradeValue))
+      this.updateStudent(student);
+    })
+
+    /*
+      addGrade(subjectId: string, gradeValue: number, studentId: string): void {
+        console.log("addGrades from the student service");
+        let url = '/api/v1/student/grade';
+        console.log(url);
+        this.http.post(url, {subjectId, gradeValue, studentId})
+          .subscribe(
+            () => console.log('Student added successfully.'),
+            error => console.error('Error adding student:', error)
+          );
+      }
+    */
+
   }
 }
 
