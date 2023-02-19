@@ -25,6 +25,7 @@
     </div>
   </label>
   <button type="submit">Erfassen</button>
+  <div *ngIf="successMessageShown" class="success-message">{{ successMessage }}</div>
 </form>
 
 

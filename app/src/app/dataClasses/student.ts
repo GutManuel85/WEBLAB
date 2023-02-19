@@ -10,10 +10,10 @@ export class Student implements StudentInterface{
   lastname: string;
   email: string;
   birthdate: string;
-  enrolledSubjects: Subject[];
+  enrolledSubjects: string[];
   grades: Grade[];
 
-  constructor(firstname :string, lastname :string, email :string, birthdate :string, enrolledSubjects :Subject[]) {
+  constructor(firstname :string, lastname :string, email :string, birthdate :string, enrolledSubjects :string[]) {
     this.id = uuidv4();
     this.firstname = firstname;
     this.lastname = lastname;
@@ -23,7 +23,7 @@ export class Student implements StudentInterface{
     this.grades = [];
   }
 
-  setEnrolledSubjects(enrolledSubjects: Subject[]) :void{
+  setEnrolledSubjects(enrolledSubjects: string[]) :void{
     this.enrolledSubjects = enrolledSubjects;
   }
 

@@ -56,7 +56,7 @@ export class SubjectGradesComponent {
       map(studentArray => {
         return studentArray.filter(student => {
           return student.enrolledSubjects.some(subject => {
-            return subject.id === subjectID;
+            return subject === subjectID;
           });
         });
       })

@@ -69,7 +69,7 @@ export class StudentService {
       );
   }
 
-  getEnrolledSubjects(student: Student): Observable<Subject[]> {
+  getEnrolledSubjects(student: Student): Observable<string[]> {
     return of(student.enrolledSubjects);
   }
 

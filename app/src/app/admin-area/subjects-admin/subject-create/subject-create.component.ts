@@ -11,8 +11,11 @@ import {SubjectService} from "../../../services/subject.service";
 export class SubjectCreateComponent {
 
   registerForm: FormGroup;
-  submitted = false;
-  descriptionMaxLength = 300;
+  submitted: boolean = false;
+  descriptionMaxLength: number = 300;
+  successMessageShown: boolean = false;
+  successMessage: string = "Erfolgreich erfasst";
+
 
   constructor(private subjectService: SubjectService, private formBuilder: FormBuilder) {
   }
@@ -36,12 +39,24 @@ export class SubjectCreateComponent {
     }
 
     console.log('Submit: ', data);
-    let subjectCode = data.subjectCode.toUpperCase( )
-    this.createSubject(data.subjectName, subjectCode, data.description)}
+    let subjectCode = data.subjectCode.toUpperCase( );
+    this.createSubject(data.subjectName, subjectCode, data.description);
+    this.showSuccessMessage();
+  }
 
   createSubject(subjectName, subjectCode, description): void {
     console.log("createSubject called")
     let subject: Subject = new Subject(subjectName, subjectCode, description);
     this.subjectService.addSubject(subject);
   }
+
+  showSuccessMessage() {
+    this.successMessageShown = true;
+    setTimeout(() => {
+      this.successMessageShown = false;
+      this.submitted = false;
+      this.registerForm.reset();
+    }, 3000);
+  }
+
 }

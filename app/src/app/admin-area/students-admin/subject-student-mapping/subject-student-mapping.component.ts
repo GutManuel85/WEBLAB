@@ -4,7 +4,7 @@ import {SubjectService} from "../../../services/subject.service";
 import {Student} from "../../../dataClasses/student";
 import {Subject} from "../../../dataClasses/subject";
 import {StudentService} from "../../../services/student.service";
-import {filter, from, map, Observable} from "rxjs";
+import {filter, from, map, Observable, switchMap, tap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from '@angular/common';
 
@@ -19,6 +19,7 @@ export class SubjectStudentMappingComponent {
   notEnrolled: any[] = [];
   enrolled: any[] = [];
   tempEnrolled: any[] = [];
+  fullSubjects: Subject[] = [];
 
   constructor(
     private subjectService: SubjectService,
@@ -77,17 +78,29 @@ export class SubjectStudentMappingComponent {
   }
 
 
-  getEnrolledSubjects(student: Student): Observable<Subject[]> {
+  getEnrolledSubjects(student: Student): Observable<string[]> {
     console.log("getEnrolledSubjects()");
-    return this.studentService.getEnrolledSubjects(student);
+    return this.studentService.getEnrolledSubjects(student).pipe(
+      tap(enrolled => this.enrolled = enrolled)
+    );
   }
 
-
-  getNotEnrolledSubjects(student: Student): Observable<Subject[]> {
+  getNotEnrolledSubjects(student: Student): Observable<string[]> {
     console.log("getNotEnrolledSubjects()");
     return this.subjectService.getSubjects().pipe(
-      map(allArray => allArray.filter(a => !this.enrolled.some(b => a.id === b.id)))
+      tap((subjects: Subject[]) => {
+        this.fullSubjects = subjects;
+        console.log(this.fullSubjects);
+      }),
+      switchMap(allArray => this.getEnrolledSubjects(student).pipe(
+        map(enrolled => allArray.filter(a => !enrolled.includes(a.id))),
+        map(notEnrolled => notEnrolled.map(a => a.id))
+      ))
     );
+  }
+
+  subjectIsEnrolled(subjectIdToBeFound: string): boolean {
+    return this.enrolled.some(subjectId => subjectId === subjectIdToBeFound);
   }
 
   goBack(): void {
@@ -95,7 +108,7 @@ export class SubjectStudentMappingComponent {
     this.location.back();
   }
 
-  save(): void{
+  save(): void {
     console.log("called save()");
     this.enrolled = this.tempEnrolled;
     this.getEnrolledSubjects(this.student);
@@ -118,7 +131,7 @@ export class SubjectStudentMappingComponent {
       console.log(`save was clicked`);
       this.save();
       this.goBack();
-    }else{
+    } else {
       console.log('cancel was clicked');
       this.goBack()
     }

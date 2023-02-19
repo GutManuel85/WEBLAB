@@ -6,5 +6,5 @@ export interface StudentInterface{
   lastname: string;
   email: string;
   birthdate: string;
-  enrolledSubjects: Subject[];
+  enrolledSubjects: string[];
 }

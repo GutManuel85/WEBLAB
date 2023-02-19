@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {StudentService} from "../../../services/student.service";
 import {Student} from "../../../dataClasses/student";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -13,9 +13,11 @@ import {formatDate} from "@angular/common";
 export class StudentCreateComponent {
 
   registerForm: FormGroup;
-  submitted = false;
+  submitted: boolean = false;
+  successMessageShown: boolean = false;
+  successMessage: string = "Erfolgreich erfasst";
 
-  constructor(private studentService :StudentService, private formBuilder: FormBuilder) {
+  constructor(private studentService: StudentService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -39,12 +41,21 @@ export class StudentCreateComponent {
     console.log('Submit: ', data);
     this.createStudent(data.firstname, data.lastname, data.email,
       formatDate(new Date(data.birthdate), 'yyyy-MM-dd', 'en-US'));
+    this.showSuccessMessage()
   }
 
-  createStudent(firstname :string, lastname :string, email :string, birthdate :string) :void{
-    let student :Student = new Student(firstname, lastname, email, birthdate, []);
+  createStudent(firstname: string, lastname: string, email: string, birthdate: string): void {
+    let student: Student = new Student(firstname, lastname, email, birthdate, []);
     this.studentService.addStudent(student);
+  }
 
-}
+  showSuccessMessage() {
+    this.successMessageShown = true;
+    setTimeout(() => {
+      this.successMessageShown = false;
+      this.submitted = false;
+      this.registerForm.reset();
+    }, 3000);
+  }
 
 }

@@ -72,6 +72,10 @@ article {
   margin-right: 25px;
 }
 
+cdk-drag.example-box{
+  border: 1px solid grey;
+}
+
 #cancel{
   background-color: var(--del-color);
   border-color: var(--del-color);
