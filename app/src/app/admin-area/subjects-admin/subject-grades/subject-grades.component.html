@@ -1,26 +1,19 @@
 <article>
-  <form [formGroup]="gradeForm" (ngSubmit)="onSubmit(gradeForm.value)">
-    <h1>Notenerfassung für {{subject.name}}</h1>
-    <div class="example-container">
-      <!-- Dropdown -->
-      <label><h3>Eingeschriebene Schüler:</h3></label>
-      <mat-form-field>
-        <mat-select placeholder="Bitte auswählen" formControlName="studentFormControl" [(ngModel)]="student" required>
-          <mat-option *ngFor="let student of enrolledStudents" value="{{student}}">
-            {{student.firstname}} {{student.lastname}}
-          </mat-option>
-          <small *ngIf="submitted && gradeForm.controls.studentFormControl.errors.required">Bitte Nachnamen eingeben</small>
-        </mat-select>
-      </mat-form-field>
-      <input type="text" id="gradeInput" formControlName="gradeFormControl" [(ngModel)]="gradeValue">
-      <small *ngIf="submitted && gradeForm.controls.gradeFormControl.errors.required">Bitte Nachnamen eingeben</small>
-      <div id="action-area">
-        <button id="cancel" class="action-button" type="submit" (click)="onButtonClick($event)">
-          Zurück
-        </button>
-        <button id="ok" class="action-button" (click)="onButtonClick($event)">Erfassen</button>
-      </div>
-    </div>
-  </form>
+  <h1 *ngIf="subject">Notenerfassung für {{subject.name}}</h1>
+    <mat-form-field>
+      <mat-label>Bitte auswählen</mat-label>
+      <mat-select [(value)]="student">
+        <mat-option *ngFor="let studentElement of enrolledStudents" [value]="studentElement">
+          {{studentElement.firstname}} {{studentElement.lastname}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <input type="text" id="gradeInput" [(ngModel)]="gradeValue">
+  <div id="action-area">
+    <button id="cancel" class="action-button" type="submit" (click)="onButtonClick($event)">
+      Zurück
+    </button>
+    <button id="ok" class="action-button" (click)="onButtonClick($event)">Erfassen</button>
+  </div>
 </article>
 

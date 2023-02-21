@@ -57,7 +57,7 @@ app.use(bodyParser.urlencoded({extended: true})); // Parse URL-encoded bodies
 app.get('/v1/subjects', (req, res, next) => {
   Subject.find()
     .then(documents => {
-      console.log(documents);
+      //console.log(documents);
       if (documents !== null) {
         res.status(200).json({
           operationStatus: 'OK',
@@ -77,7 +77,7 @@ app.get('/v1/subjects', (req, res, next) => {
 app.get('/v1/subject/:id', (req, res, next) => {
   Subject.find({id: req.params.id})
     .then(documents => {
-      console.log(documents);
+      //console.log(documents);
       if (documents) {
         res.send(documents[0]);
       } else {
@@ -96,7 +96,7 @@ app.post("/v1/subjects", (req, res) => {
     description: req.body.description,
     timestamp: date,
   })
-  console.log(subject);
+  //console.log(subject);
   subject.save();
   res.status(201);
   res.end();
@@ -105,7 +105,7 @@ app.post("/v1/subjects", (req, res) => {
 app.get('/v1/students', (req, res, next) => {
   Student.find()
     .then(documents => {
-      console.log(documents);
+      //console.log(documents);
       if (documents !== null) {
         res.status(200).json({
           operationStatus: 'OK',
@@ -125,7 +125,7 @@ app.get('/v1/students', (req, res, next) => {
 app.get('/v1/student/:id', (req, res, next) => {
   Student.find({id: req.params.id})
     .then(documents => {
-      console.log(documents);
+      //console.log(documents);
       if (documents) {
         res.send(documents[0]);
       } else {
@@ -147,33 +147,49 @@ app.post('/v1/students', (req, res, next) => {
     grades: req.body.grades,
     timestamp: date,
   })
-  console.log(student);
+  //console.log(student);
   student.save();
   res.status(201);
   res.end();
 })
 
+
 app.put('/v1/student/:id', (req, res, next) => {
-  Student.findOneAndUpdate({id: req.params.id}, req.body)
-    .then(documents => {
-      console.log(documents);
-      if (documents) {
-        res.status(201);
+  console.log("********************************************PUT****************************")
+  console.log(req.body);
+  const updatedFields = {
+    id: req.body.id,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+    birthdate: req.body.birthdate,
+    enrolledSubjects: req.body.enrolledSubjects,
+    grades: req.body.grades,
+  };
+  Student.findOneAndUpdate({ id: req.params.id }, updatedFields, { new: true })
+    .then(updatedStudent => {
+      //console.log(updatedStudent);
+      if (updatedStudent) {
+        res.status(200).end();
       } else {
-        res.status(500);
+        res.status(404).end();
       }
-      res.end();
     })
+    .catch(error => {
+      console.error(error);
+      res.status(500).end();
+    });
 });
+
 
 app.delete('/v1/student/:id', (req, res, next) => {
   Student.findOneAndDelete({id: req.params.id}, (error, documents) => {
     if (error){
-      console.log(error);
+      //console.log(error);
       res.status(404);
     }
     else{
-      console.log("Deleted User : ", documents);
+      //console.log("Deleted User : ", documents);
       res.status(200)
     }
     res.end();

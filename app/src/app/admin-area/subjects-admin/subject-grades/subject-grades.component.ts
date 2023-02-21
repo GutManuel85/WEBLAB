@@ -7,6 +7,7 @@ import {StudentService} from "../../../services/student.service";
 import {Student} from "../../../dataClasses/student";
 import {map, Observable, of} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-subject-grades',
@@ -19,8 +20,7 @@ export class SubjectGradesComponent {
   students: Student[];
   enrolledStudents: Student[];
   student: Student;
-  gradeValue: number;
-  gradeForm: FormGroup;
+  gradeValue: string;
   submitted = false;
 
   constructor(
@@ -43,10 +43,6 @@ export class SubjectGradesComponent {
         this.enrolledStudents = enrolledStudents;
         console.log("******** enrolled Students ************");
         console.log(enrolledStudents);
-        this.gradeForm = this.formBuilder.group({
-          FormControl: ['', Validators.required],
-          gradeFormControl: ['', Validators.required, Validators.min(1), Validators.max(6)]
-        });
       });
     });
   }
@@ -74,23 +70,22 @@ export class SubjectGradesComponent {
     if (target.id === 'cancel') {
       console.log(`save was clicked`);
       this.goBack();
+    } else {
+      this.submit()
     }
   }
 
-  onSubmit(data: any) {
+  submit() {
     this.submitted = true;
-    console.log(this.gradeForm.value);
     console.log(this.student);
     console.log(this.subject);
     console.log(this.gradeValue);
-
-    // stop here if form is invalid
-    if (this.gradeForm.invalid) {
-      console.log('invalid form')
-      return;
-    }
-    console.log('Submit: ', data);
     this.studentService.addGrade(this.subject.id, this.gradeValue, this.student.id);
+    this.studentService.updateStudent(this.student).subscribe(response => {
+      console.log("Student updated");
+      console.log(response);
+    });
+    ;
   }
 }
 

@@ -1,8 +1,8 @@
 export class Grade{
   subjectId: string;
-  gradeValue: number;
+  gradeValue: string;
 
-  constructor(subjectId: string, gradeValue: number) {
+  constructor(subjectId: string, gradeValue: string) {
     this.subjectId = subjectId;
     this.gradeValue = gradeValue;
   }

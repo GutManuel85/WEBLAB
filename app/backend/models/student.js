@@ -7,7 +7,10 @@ const studentSchema = mongoose.Schema({
     email: {type: String, required: true},
     birthdate: {type: String, required: true},
     enrolledSubjects: {type: [String], default: []},
-    grades: [{type: mongoose.Schema.Types.ObjectId, ref: 'Grade'}],
+    grades: [{
+      gradeValue: {type: String, required: true},
+      subjectId: {type: String, required: true},
+    }],
     timestamp: {type: Date, required: true}
   }
 )

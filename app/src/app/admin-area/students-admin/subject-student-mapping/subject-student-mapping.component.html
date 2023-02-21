@@ -1,5 +1,5 @@
 <article>
-  <h1>Einschreibung für {{student.firstname}} {{student.lastname}}</h1>
+  <h1 *ngIf="student">Einschreibung für {{student.firstname}} {{student.lastname}}</h1>
   <div class="example-container">
     <h2>Nicht eingeschrieben</h2>
     <div

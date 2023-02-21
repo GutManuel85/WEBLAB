@@ -56,6 +56,8 @@ export class StudentService {
     console.log("update from the student service");
     console.log(student);
     const url = `/api/v1/student/${student.id}`;
+    console.log(url);
+    console.log(student.grades);
     return this.http.put(url, student);
   }
 
@@ -74,7 +76,7 @@ export class StudentService {
     return of(student.enrolledSubjects);
   }
 
-  addGrade(subjectId: string, gradeValue: number, studentId: string): void {
+  addGrade(subjectId: string, gradeValue: string, studentId: string): void {
     this.getStudent(studentId).subscribe((student) => {
       student.grades.push(new Grade(subjectId, gradeValue))
       this.updateStudent(student);
