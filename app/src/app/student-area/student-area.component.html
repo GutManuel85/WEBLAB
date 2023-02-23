@@ -1,1 +1,38 @@
-<p>student-area works!</p>
+<ng-container *ngIf="students">
+  <div class="student-card-container" *ngFor="let student of students">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ student.firstname }} {{ student.lastname }}</mat-card-title>
+        <mat-card-subtitle>ID: {{ student.id }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="enrolled-subjects">
+          <h3>Enrolled Subjects:</h3>
+          <ul>
+            <li *ngFor="let subject of student.enrolledSubjects">{{ subject }}</li>
+          </ul>
+        </div>
+        <div class="grades">
+          <h3>Grades:</h3>
+          <table>
+            <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Grade</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let grade of student.grades">
+              <td>{{ getSubjectName(grade.subjectId) }}</td>
+              <td>{{ grade.gradeValue }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>View Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-container>

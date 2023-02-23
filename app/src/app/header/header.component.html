@@ -6,7 +6,7 @@
     <li *ngIf="role === 'admin'"><a routerLink="/students-admin">Schüler-Verwaltung</a></li>
     <li *ngIf="role === 'admin'"><a routerLink="/subjects-admin">Fächer-Verwaltung</a></li>
     <li *ngIf="role === 'admin' || role === 'teacher'"><a routerLink="/classes-admin">Klassen-Verwaltung</a></li>
-    <li *ngIf="role === 'student'"><a href="#">Meine Noten</a></li>
+    <li *ngIf="role === 'admin' || role === 'teacher' || role ==='student'"><a routerLink="/student-area">Meine Noten</a></li>
     <li><a routerLink="/login">SignOut</a></li>
 
   </ul>
