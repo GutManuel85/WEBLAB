@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {ReloadRouteService} from "../services/reload-router.service";
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,8 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  collapsed = true;
-  role = "admin";
+  collapsed: boolean = true;
 
+  constructor(private reloadRouterService: ReloadRouteService, public loginService: LoginService) { //wird hier gebraucht, da in Methode von Parent mit reingegeben
+  }
 }

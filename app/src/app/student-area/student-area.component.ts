@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student.service';
 import { SubjectService } from '../services/subject.service';
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: 'app-teacher-area',
@@ -11,7 +12,7 @@ export class StudentAreaComponent implements OnInit {
   students: any[];
   subjects: any[]; // Add this property for the subject list
 
-  constructor(private studentService: StudentService, private subjectService: SubjectService) {}
+  constructor(private studentService: StudentService, private subjectService: SubjectService, public loginService: LoginService) {}
 
   ngOnInit(): void {
     this.studentService.getStudents().subscribe((students) => {

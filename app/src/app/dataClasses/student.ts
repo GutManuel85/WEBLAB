@@ -1,6 +1,5 @@
 import {StudentInterface} from "./studentInterface";
 import {v4 as uuidv4} from 'uuid';
-import {Subject} from "./subject";
 import {Grade} from "./grade";
 
 export class Student implements StudentInterface{

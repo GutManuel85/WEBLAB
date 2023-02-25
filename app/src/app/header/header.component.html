@@ -1,13 +1,14 @@
 <nav>
   <ul>
-    <li><strong><a routerLink="/">GradeUp</a></strong></li>
+    <li id="gradeUp"><strong>GradeUp</strong></li>
   </ul>
   <ul>
-    <li *ngIf="role === 'admin'"><a routerLink="/students-admin">Schüler-Verwaltung</a></li>
-    <li *ngIf="role === 'admin'"><a routerLink="/subjects-admin">Fächer-Verwaltung</a></li>
-    <li *ngIf="role === 'admin' || role === 'teacher'"><a routerLink="/classes-admin">Klassen-Verwaltung</a></li>
-    <li *ngIf="role === 'admin' || role === 'teacher' || role ==='student'"><a routerLink="/student-area">Meine Noten</a></li>
-    <li><a routerLink="/login">SignOut</a></li>
-
+    <li *ngIf="this.loginService.role === 'admin'"><a routerLink="/students-admin">Schüler-Verwaltung</a></li>
+    <li *ngIf="this.loginService.role === 'admin' || this.loginService.role === 'teacher'">
+      <a routerLink="/subjects-admin">Fächer-Verwaltung</a></li>
+    <li *ngIf="this.loginService.role === 'admin' || this.loginService.role === 'teacher'">
+      <a routerLink="/student-area">Notenübersicht</a></li>
+    <li *ngIf="this.loginService.role ==='student'"><a routerLink="/student-area">Meine Noten</a></li>
+    <li><a (click)="this.loginService.logout()">SignOut</a></li>
   </ul>
 </nav>

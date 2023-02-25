@@ -6,6 +6,7 @@ mongoose.set('strictQuery', false);
 
 const Subject = require('./models/subject');
 const Student = require('./models/student');
+const User = require('./models/user')
 
 const app = express();
 
@@ -18,41 +19,30 @@ mongoose.connect('mongodb+srv://AdminUser:amgNDdq5MdB4sAcr@cluster0.qbv4oji.mong
     console.log(error);
   });
 
-//ToDo: entfernen
-const students = [
-  {
-    id: "1",
-    firstname: "Sofia",
-    lastname: "Müller",
-    email: "sofia.mueller@mymail.ch",
-    birthdate: "2010-01-01",
-    enrolledSubjects: [],
-    grades: [{subjectId: "1", gradeValue: 5.5}, {subjectId: "2", gradeValue: 5}]
-  },
-  {
-    id: "2",
-    firstname: "Joana",
-    lastname: "Gutmann",
-    email: "joana.gutmann@mymail.ch",
-    birthdate: "2010-12-11",
-    enrolledSubjects: [],
-    grades: [{subjectId: "1", gradeValue: 5.5}, {subjectId: "2", gradeValue: 5}]
-  },
-  {
-    id: "3",
-    firstname: "Johannes",
-    lastname: "Meier",
-    email: "johannes.meier@mymail.ch",
-    birthdate: "2008-04-05",
-    enrolledSubjects: [],
-    grades: [{subjectId: "1", gradeValue: 5.5}, {subjectId: "2", gradeValue: 5}]
-  },
-
-]
-
 app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({extended: true})); // Parse URL-encoded bodies
 
+app.post('/v1/user', (req, res, next) => {
+  User.find({email: req.body.email})
+    .then(documents => {
+      console.log(documents);
+      if (documents !== null) {
+        res.status(200).json({
+          operationStatus: 'OK',
+          users: documents
+        });
+        console.log("User found");
+        res.end();
+      } else {
+        res.status(500).json({
+          operationStatus: 'NOK',
+          users: documents
+        });
+        console.log("User not found");
+        res.end();
+      }
+    });
+});
 
 app.get('/v1/subjects', (req, res, next) => {
   Subject.find()
@@ -167,7 +157,7 @@ app.put('/v1/student/:id', (req, res, next) => {
     enrolledSubjects: body.enrolledSubjects,
     grades: body.grades,
   };
-  Student.findOneAndUpdate({ id: req.params.id }, updatedFields, { new: true })
+  Student.findOneAndUpdate({id: req.params.id}, updatedFields, {new: true})
     .then(updatedStudent => {
       //console.log(updatedStudent);
       if (updatedStudent) {
@@ -185,11 +175,10 @@ app.put('/v1/student/:id', (req, res, next) => {
 
 app.delete('/v1/student/:id', (req, res, next) => {
   Student.findOneAndDelete({id: req.params.id}, (error, documents) => {
-    if (error){
+    if (error) {
       //console.log(error);
       res.status(404);
-    }
-    else{
+    } else {
       //console.log("Deleted User : ", documents);
       res.status(200)
     }
@@ -214,7 +203,7 @@ app.delete('/v1/student/:id', (req, res, next) => {
 
 module.exports = app;
 
-function getTimestamp(){
+function getTimestamp() {
   const date = new Date();
   date.setHours(date.getHours() + 1);
   return date;

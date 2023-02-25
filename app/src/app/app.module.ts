@@ -7,11 +7,9 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {LogInComponent} from './log-in/log-in.component';
 import {AdminAreaComponent} from './admin-area/admin-area.component';
-import {TeacherAreaComponent} from './teacher-area/teacher-area.component';
 import {StudentAreaComponent} from './student-area/student-area.component';
 import {SubjectsAdminComponent} from './admin-area/subjects-admin/subjects-admin.component';
 import {StudentsAdminComponent} from './admin-area/students-admin/students-admin.component';
-import {ClassesAdminComponent} from './admin-area/classes-admin/classes-admin.component';
 import {StudentListComponent} from './admin-area/students-admin/student-list/student-list.component';
 import {StudentCreateComponent} from './admin-area/students-admin/student-create/student-create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -50,11 +48,9 @@ import {ReloadRouteService} from "./services/reload-router.service";
     HeaderComponent,
     LogInComponent,
     AdminAreaComponent,
-    TeacherAreaComponent,
     StudentAreaComponent,
     SubjectsAdminComponent,
     StudentsAdminComponent,
-    ClassesAdminComponent,
     StudentListComponent,
     StudentCreateComponent,
     PlaygroundComponent,

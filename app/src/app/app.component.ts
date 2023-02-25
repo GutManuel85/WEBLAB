@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ReloadRouteService} from "./services/reload-router.service";
+import {LoginService} from "./services/login.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  loggedIn = true;
+
+  constructor(public loginService: LoginService) {
+  }
 }
+
+
