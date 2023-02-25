@@ -13,6 +13,10 @@
   color: var(--error);
 }
 
+.success-message{
+  color: var(--green);
+}
+
 #gradeInput {
   margin-right: 25px;
 }

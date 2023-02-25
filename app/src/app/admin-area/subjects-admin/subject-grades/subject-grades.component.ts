@@ -23,6 +23,8 @@ export class SubjectGradesComponent {
   student: Student;
   gradeValue: number;
   submitted = false;
+  successMessageShown: boolean;
+  successMessage: string = "Note erfolgreich erfasst";
 
   constructor(
     private subjectService: SubjectService,
@@ -85,8 +87,8 @@ export class SubjectGradesComponent {
     this.studentService.updateStudent(this.student).subscribe(response => {
       console.log("Student updated");
       console.log(response);
+      this.showSuccessMessage();
     });
-    ;
   }
 
   isNaN(value: any): boolean {
@@ -98,6 +100,14 @@ export class SubjectGradesComponent {
       return Number.isNaN(numericValue);
     }
     return true;
+  }
+
+  showSuccessMessage() {
+    this.successMessageShown = true;
+    setTimeout(() => {
+      this.successMessageShown = false;
+      this.submitted = false;
+    }, 3000);
   }
 
 }
