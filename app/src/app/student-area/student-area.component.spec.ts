@@ -17,7 +17,14 @@ describe('StudentAreaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should calculate the average grade correctly for a subject', () => {
+    const grades = [
+      { subjectId: '1', gradeValue: 2 },
+      { subjectId: '1', gradeValue: 3 },
+      { subjectId: '1', gradeValue: 4 },
+    ];
+    const subjectId = '1';
+    const average = component.getAverageGradeBySubjectId(grades, subjectId);
+    expect(average).toEqual(3);
   });
 });
