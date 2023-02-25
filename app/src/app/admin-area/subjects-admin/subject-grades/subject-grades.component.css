@@ -9,6 +9,10 @@
   margin-right: 25px;
 }
 
+.error-message{
+  color: var(--error);
+}
+
 #gradeInput {
   margin-right: 25px;
 }
@@ -17,3 +21,5 @@
   background-color: var(--del-color);
   border-color: var(--del-color);
 }
+
+

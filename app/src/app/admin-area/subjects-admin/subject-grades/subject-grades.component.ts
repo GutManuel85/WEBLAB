@@ -21,7 +21,7 @@ export class SubjectGradesComponent {
   students: Student[];
   enrolledStudents: Student[];
   student: Student;
-  gradeValue: string;
+  gradeValue: number;
   submitted = false;
 
   constructor(
@@ -88,6 +88,18 @@ export class SubjectGradesComponent {
     });
     ;
   }
+
+  isNaN(value: any): boolean {
+    if (typeof value === 'number') {
+      return Number.isNaN(value);
+    }
+    if (typeof value === 'string') {
+      const numericValue = Number.parseFloat(value);
+      return Number.isNaN(numericValue);
+    }
+    return true;
+  }
+
 }
 
 

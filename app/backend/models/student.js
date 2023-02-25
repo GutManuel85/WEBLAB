@@ -9,7 +9,7 @@ const studentSchema = mongoose.Schema({
     enrolledSubjects: {type: [String], default: []},
     grades: [
       {
-      gradeValue: {type: String, required: true},
+      gradeValue: {type: Number, required: true},
       subjectId: {type: String, required: true},
     }
     ],

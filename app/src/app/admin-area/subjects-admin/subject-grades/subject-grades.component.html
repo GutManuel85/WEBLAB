@@ -1,19 +1,23 @@
 <article>
   <h1 *ngIf="subject">Notenerfassung für {{subject.name}}</h1>
-    <mat-form-field>
-      <mat-label>Bitte auswählen</mat-label>
-      <mat-select [(value)]="student">
-        <mat-option *ngFor="let studentElement of enrolledStudents" [value]="studentElement">
-          {{studentElement.firstname}} {{studentElement.lastname}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  <input type="text" id="gradeInput" [(ngModel)]="gradeValue">
+  <mat-form-field>
+    <mat-label>Bitte auswählen</mat-label>
+    <mat-select [(value)]="student">
+      <mat-option *ngFor="let studentElement of enrolledStudents" [value]="studentElement">
+        {{studentElement.firstname}} {{studentElement.lastname}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <input type="number" id="gradeInput" [(ngModel)]="gradeValue" step="0.1" min="1" max="6" required>
+  <div *ngIf="submitted &&(isNaN(gradeValue) || (gradeValue < 1 || gradeValue > 6))" class="error-message">
+    Bitte Zahl zwischen 1 und 6 eingeben
+  </div>
   <div id="action-area">
     <button id="cancel" class="action-button" type="submit" (click)="onButtonClick($event)">
       Zurück
     </button>
-    <button id="ok" class="action-button" (click)="onButtonClick($event)">Erfassen</button>
+    <button id="ok" class="action-button" [disabled]="submitted && (isNaN(gradeValue) || gradeValue < 1 || gradeValue > 6)" (click)="onButtonClick($event)">
+      Erfassen
+    </button>
   </div>
 </article>
-
