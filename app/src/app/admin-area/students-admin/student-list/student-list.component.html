@@ -3,7 +3,8 @@
 </label>
 <input type="text" id="search" name="search" placeholder="Suchtext eingeben"
 [(ngModel)]="mySearchString">
-
+<button class="refreshButton" (click)="reloadList()">Liste aktualisieren</button>
 <app-student-item *ngFor="let studentElement of students"
                   [student]="studentElement" [searchString]="mySearchString">
 </app-student-item>
+

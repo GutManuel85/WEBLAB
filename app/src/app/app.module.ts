@@ -38,9 +38,10 @@ import {
 } from './admin-area/students-admin/subject-student-mapping/subject-student-mapping.component';
 import {CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
 import {HttpClientModule} from "@angular/common/http";
-import { SubjectGradesComponent } from './admin-area/subjects-admin/subject-grades/subject-grades.component';
-import { GradeFormComponent } from './admin-area/subjects-admin/subject-grades/grade-form/grade-form.component';
+import {SubjectGradesComponent} from './admin-area/subjects-admin/subject-grades/subject-grades.component';
+import {GradeFormComponent} from './admin-area/subjects-admin/subject-grades/grade-form/grade-form.component';
 import {MatSelectModule} from "@angular/material/select";
+import {ReloadRouteService} from "./services/reload-router.service";
 
 
 @NgModule({
@@ -64,31 +65,32 @@ import {MatSelectModule} from "@angular/material/select";
     SubjectItemComponent,
     SubjectStudentMappingComponent,
     SubjectGradesComponent,
-    GradeFormComponent
+    GradeFormComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        MatSlideToggleModule,
-        MatListModule,
-        MatProgressSpinnerModule,
-        MatButtonModule,
-        MatCardModule,
-        MatTabsModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatExpansionModule,
-        CdkDropList,
-        DragDropModule,
-        HttpClientModule,
-        MatSelectModule
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    CdkDropList,
+    DragDropModule,
+    HttpClientModule,
+    MatSelectModule
+
+  ],
+  providers: [ReloadRouteService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
