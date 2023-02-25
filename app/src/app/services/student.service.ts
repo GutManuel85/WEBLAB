@@ -58,7 +58,9 @@ export class StudentService {
     const url = `/api/v1/student/${student.id}`;
     console.log(url);
     console.log(student.grades);
-    return this.http.put(url, student);
+    const studentJsonString =  student //JSON.stringify(student);
+    console.log(studentJsonString);
+    return this.http.put(url, studentJsonString, this.httpOptions);
   }
 
   deleteStudent(student: Student): void {
@@ -74,27 +76,6 @@ export class StudentService {
 
   getEnrolledSubjects(student: Student): Observable<string[]> {
     return of(student.enrolledSubjects);
-  }
-
-  addGrade(subjectId: string, gradeValue: string, studentId: string): void {
-    this.getStudent(studentId).subscribe((student) => {
-      student.grades.push(new Grade(subjectId, gradeValue))
-      this.updateStudent(student);
-    })
-
-    /*
-      addGrade(subjectId: string, gradeValue: number, studentId: string): void {
-        console.log("addGrades from the student service");
-        let url = '/api/v1/student/grade';
-        console.log(url);
-        this.http.post(url, {subjectId, gradeValue, studentId})
-          .subscribe(
-            () => console.log('Student added successfully.'),
-            error => console.error('Error adding student:', error)
-          );
-      }
-    */
-
   }
 }
 

@@ -156,15 +156,16 @@ app.post('/v1/students', (req, res, next) => {
 
 app.put('/v1/student/:id', (req, res, next) => {
   console.log("********************************************PUT****************************")
-  console.log(req.body);
+  const body = req.body;
+  console.log(body);
   const updatedFields = {
-    id: req.body.id,
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    email: req.body.email,
-    birthdate: req.body.birthdate,
-    enrolledSubjects: req.body.enrolledSubjects,
-    grades: req.body.grades,
+    id: body.id,
+    firstname: body.firstname,
+    lastname: body.lastname,
+    email: body.email,
+    birthdate: body.birthdate,
+    enrolledSubjects: body.enrolledSubjects,
+    grades: body.grades,
   };
   Student.findOneAndUpdate({ id: req.params.id }, updatedFields, { new: true })
     .then(updatedStudent => {

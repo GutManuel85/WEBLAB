@@ -5,9 +5,10 @@ import {ActivatedRoute} from "@angular/router";
 import {formatDate, Location} from "@angular/common";
 import {StudentService} from "../../../services/student.service";
 import {Student} from "../../../dataClasses/student";
-import {map, Observable, of} from "rxjs";
+import {map, Observable, of, tap} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
+import {Grade} from "../../../dataClasses/grade";
 
 @Component({
   selector: 'app-subject-grades',
@@ -80,7 +81,7 @@ export class SubjectGradesComponent {
     console.log(this.student);
     console.log(this.subject);
     console.log(this.gradeValue);
-    this.studentService.addGrade(this.subject.id, this.gradeValue, this.student.id);
+    this.student.grades.push(new Grade(this.subject.id, this.gradeValue));
     this.studentService.updateStudent(this.student).subscribe(response => {
       console.log("Student updated");
       console.log(response);
