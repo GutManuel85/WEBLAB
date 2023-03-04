@@ -8,11 +8,9 @@ import {
 import {LogInComponent} from "./log-in/log-in.component";
 import {SubjectGradesComponent} from "./admin-area/subjects-admin/subject-grades/subject-grades.component";
 import {StudentAreaComponent} from "./student-area/student-area.component";
-import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   { path: '', component: LogInComponent},
-  {path: 'home', component: HomeComponent}, //toDo: entfernen inklusive ganze Komponente
   { path: 'students-admin', component: StudentsAdminComponent },
   { path: 'students-admin/enroll', component: SubjectStudentMappingComponent},
   { path: 'students-admin/enroll/:id', component: SubjectStudentMappingComponent},
