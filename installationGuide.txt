@@ -5,13 +5,13 @@ npm install -g @angular/cli         ::muss nur einmal gemacht werden, da global
 
 git clone https://github.com/GutManuel85/WEBLAB.git
 
-Das File hier app/node_modules/@angular/material/prebuilt-themes/indigo-pink.css with mit diesem
-File app/src/assets/indigo-pink.css.asset ersetzen und die File-Endung ".asset" entfernen,
-damit das File nachher wieder gleich heisst wie das Ersetze (also so "indigo-pink.css").
-
-cd ./app
+cd WEBLAB/app
 
 npm install  ::Installiert alle dependencies aus package.json
+
+Das File hier app/node_modules/@angular/material/prebuilt-themes/indigo-pink.css mit diesem
+File app/src/assets/indigo-pink.css.asset ersetzen und die File-Endung ".asset" entfernen,
+damit das File nachher wieder gleich heisst wie das Ersetze (also so "indigo-pink.css").
 
 ng serve
 
