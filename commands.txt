@@ -1,7 +1,11 @@
-Angular:
+*********Node.js******************************
+Node.js installieren
+Node.js herunterladen unter https://nodejs.org/en/download/ und installieren
 
 *********Create APP and Setup style***********
 npm install -g @angular/cli         ::muss nur einmal gemacht werden, da global
+
+*********Create APP and Setup style***********
 ng new app --no-strict
 cd ./app
 ng add @angular/material
