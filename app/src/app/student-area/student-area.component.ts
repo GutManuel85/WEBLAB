@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../services/student.service';
-import { SubjectService } from '../services/subject.service';
+import {Component, OnInit} from '@angular/core';
+import {StudentService} from '../services/student.service';
+import {SubjectService} from '../services/subject.service';
 import {LoginService} from "../services/login.service";
+import {User} from "../dataClasses/user";
 
 @Component({
   selector: 'app-teacher-area',
@@ -12,13 +13,26 @@ export class StudentAreaComponent implements OnInit {
   students: any[];
   subjects: any[]; // Add this property for the subject list
 
-  constructor(private studentService: StudentService, private subjectService: SubjectService, public loginService: LoginService) {}
+  constructor(private studentService: StudentService, private subjectService: SubjectService, public loginService: LoginService) {
+  }
 
   ngOnInit(): void {
     this.studentService.getStudents().subscribe((students) => {
-      this.students = students;
+      console.log(localStorage.getItem("user"));
+      let user: User = JSON.parse(localStorage.getItem("user"));
+      if(user.role === "student") {
+        for (let student of students) {
+          console.log(student.email);
+          if (student.email == user.email) {
+            this.students = [];
+            this.students.push(student);
+            console.log("email matched");
+          }
+        }
+      }else{
+        this.students = students;
+      }
     });
-
     this.subjectService.getSubjects().subscribe((subjects) => {
       this.subjects = subjects;
     });
@@ -40,7 +54,9 @@ export class StudentAreaComponent implements OnInit {
   getAverageGradeBySubjectId(grades: any[], subjectId: string): number {
     const subjectGrades = grades.filter(g => g.subjectId === subjectId);
     const sum = subjectGrades.reduce((acc, curr) => acc + curr.gradeValue, 0);
-    return sum / subjectGrades.length;
+    const average = sum / subjectGrades.length;
+    return parseFloat(average.toFixed(2));
   }
+
 }
 
