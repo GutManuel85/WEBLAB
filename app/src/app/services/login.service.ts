@@ -2,9 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ReloadRouteService} from "./reload-router.service";
 import {catchError, map, Observable} from "rxjs";
-import {Student} from "../dataClasses/student";
 import {User} from "../dataClasses/user";
-import {Subject} from "../dataClasses/subject";
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +63,7 @@ export class LoginService {
     // Perform logout logic
     console.log("logout() called");
     this.isLoggedIn = false;
-    this.reloadRouteService.redirectTo("./")
+    localStorage.removeItem('user');
+    this.reloadRouteService.redirectTo("");
   }
 }

@@ -82,3 +82,7 @@ article div:nth-of-type(2) {
 body > footer {
   padding: 1rem 0;
 }
+
+small{
+  color: var(--error);
+}
