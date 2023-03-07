@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ReloadRouteService} from "../services/reload-router.service";
 import {LoginService} from "../services/login.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-log-in',
@@ -44,19 +43,19 @@ export class LogInComponent {
   }
 
   doLogIn(data: any): void {
-    this.loginService.login(data.email, data.password);
-    if (this.loginService.isLoggedIn) {
-      console.log("********* Login was successful ***********")
-      if (this.loginService.role === "admin") {
-        this.reloadRouteService.redirectTo("./students-admin")
+    this.loginService.login(data.email, data.password).subscribe(() => {
+      if (this.loginService.isLoggedIn) {
+        console.log("********* Login was successful ***********")
+        if (this.loginService.role === "admin") {
+          this.reloadRouteService.redirectTo("./students-admin")
+        }
+        if (this.loginService.role === "teacher") {
+          this.reloadRouteService.redirectTo("./subjects-admin")
+        }
+        if (this.loginService.role === "student") {
+          this.reloadRouteService.redirectTo("./student-area")
+        }
       }
-      if (this.loginService.role === "teacher") {
-        this.reloadRouteService.redirectTo("./subjects-admin")
-      }
-      if (this.loginService.role === "student") {
-        this.reloadRouteService.redirectTo("./student-area")
-      }
-    }
+    });
   }
-
 }

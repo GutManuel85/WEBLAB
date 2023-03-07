@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ReloadRouteService} from "./reload-router.service";
-import {catchError, map, Observable} from "rxjs";
+import {catchError, map, Observable, of} from "rxjs";
 import {User} from "../dataClasses/user";
 
 @Injectable({
@@ -28,7 +28,7 @@ export class LoginService {
 
   getUser(email: string): Observable<User> {
     const body = {email: email};
-    return this.http.post<{operationStatus, users}>('/api/v1/user', body)
+    return this.http.post<{ operationStatus, users }>('/api/v1/user', body)
       .pipe(
         map((userData) => {
           console.log(userData);
@@ -47,7 +47,7 @@ export class LoginService {
   }
 
 
-  login(email: string, password: string): void {
+  login(email: string, password: string): Observable<any> {
     console.log("login() called");
     // Perform authentication logic
     this.getUser(email).subscribe(() => {
@@ -57,6 +57,7 @@ export class LoginService {
         localStorage.setItem('user', JSON.stringify(this.user));
       }
     });
+    return of(this.isLoggedIn);
   }
 
   logout(): void {

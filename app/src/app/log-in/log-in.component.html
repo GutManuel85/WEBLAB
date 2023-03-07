@@ -15,8 +15,7 @@
             </label>
           </fieldset>
           <button type="submit" class="contrast">Login</button>
-        <small *ngIf="submitted && signInForm.invalid">Zugangsdaten ungültig</small>
-
+        <small *ngIf="submitted && (signInForm.invalid)">Zugangsdaten ungültig</small>
       </div>
       <div></div>
     </article>
