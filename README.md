@@ -27,7 +27,7 @@ ng serve
 ```
 
 ### Zweites Terminal
-Zweites Terminal öffnen und zu selben Pfad navigieren wie oben
+Zweites Terminal öffnen und zu selbem Pfad navigieren wie oben
 
 ### Server starten
 ```
